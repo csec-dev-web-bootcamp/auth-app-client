@@ -32,7 +32,7 @@ export async function middleware(request) {
 
     if (isRolePath && !pathname.startsWith(userRolePath)) {
       const currentPath = pathname.replace(RegExp(roleRoutes.join("|")), userRolePath)
-      if (roleRoutes.includes(roleRoutes.includes(currentPath))) {
+      if (roleRoutes.includes(userRolePath)) {
         return NextResponse.redirect(
           new URL(currentPath, request.url),
         );
@@ -43,7 +43,7 @@ export async function middleware(request) {
     }
 
     if (isAuthPath) {
-      if (roleRoutes.includes(roleRoutes.includes(userRolePath))) {
+      if (roleRoutes.includes(userRolePath)) {
         return NextResponse.redirect(
           new URL(userRolePath, request.url),
         );
